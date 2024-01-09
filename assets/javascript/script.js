@@ -9,16 +9,37 @@ function generatePassword() {
   var keyLength = prompt("Password must be between 8 and 32 characters, please enter your desired length and click 'OK' to continue");
   var uppercaseAllowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowercaseAllowed = "abcdefghijklmnopqrstuvwxyz";
-  var scAllowed = "@%+\/'!#$^?:,(){}[]~-_."
+  var symAllowed = "@%+\/'!#$^?:,(){}[]~-_.";
+  var numsAllowed = "0123456789";
+  var selectMultiple = [];
+
+  if (keyLength < 8 || keyLength > 32) {
+    alert("Your password does not meet our criteria. Please try again.");
+    var keyLength = prompt("Password must be between 8 and 32 characters.");
+  } if (uppercase || lowercase || symbols || numbers) {
+    //Password will be generated
+  } else {
+      return "No options selected. Please select at least one option to generate a password.";
+  };
+
+  if (uppercase) {selectMultiple += uppercaseAllowed};
+  if (lowercase) {selectMultiple += lowercaseAllowed};
+  if (symbols) {selectMultiple += symAllowed};
+  if (numbers) {selectMultiple += numsAllowed};
+
+  let generatedPassword = ""
+  for (let i = 0; i < keyLength; i++) {
+    let rpg = Math.floor(Math.random() * selectMultiple.length);
+    generatedPassword = generatedPassword + selectMultiple[rpg];
+  }
+  return generatedPassword;
 }
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
