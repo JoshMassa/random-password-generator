@@ -6,16 +6,16 @@ function generatePassword() {
   var lowercase = confirm("Would you like your password to contain lowercase letters? Please click 'OK' for Yes or 'Cancel' for No.");
   var symbols = confirm("Would you like your password to contain special characters? Please click 'OK' for Yes or 'Cancel' for No.");
   var numbers = confirm("Would you like your password to contain numbers? Please click 'OK' for Yes or 'Cancel' for No.");
-  var keyLength = prompt("Password must be between 8 and 32 characters, please enter your desired length and click 'OK' to continue");
+  var keyLength = prompt("Password must be between 8 and 128 characters, please enter your desired length and click 'OK' to continue");
   var uppercaseAllowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowercaseAllowed = "abcdefghijklmnopqrstuvwxyz";
   var symAllowed = "@%+\/'!#$^?:,(){}[]~-_.";
   var numsAllowed = "0123456789";
   var selectMultiple = [];
 
-  while (isNaN(keyLength) || keyLength < 8 || keyLength > 32) {
+  while (isNaN(keyLength) || keyLength < 8 || keyLength > 128) {
     alert("Your password does not meet our criteria. Please try again.");
-    keyLength = prompt("Password must be between 8 and 32 characters.");
+    keyLength = prompt("Password must be between 8 and 128 characters.");
   }
   
   if (uppercase || lowercase || symbols || numbers) {
