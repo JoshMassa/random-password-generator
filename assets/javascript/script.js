@@ -13,10 +13,12 @@ function generatePassword() {
   var numsAllowed = "0123456789";
   var selectMultiple = [];
 
-  if (keyLength < 8 || keyLength > 32) {
+  while (isNaN(keyLength) || keyLength < 8 || keyLength > 32) {
     alert("Your password does not meet our criteria. Please try again.");
-    var keyLength = prompt("Password must be between 8 and 32 characters.");
-  } if (uppercase || lowercase || symbols || numbers) {
+    keyLength = prompt("Password must be between 8 and 32 characters.");
+  }
+  
+  if (uppercase || lowercase || symbols || numbers) {
     //Password will be generated
   } else {
       return "No options selected. Please select at least one option to generate a password.";
